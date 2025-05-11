@@ -20,7 +20,7 @@ namespace PlannerApp
             TaskList.ItemsSource = tasks;
         }
         
-                private void SearchButton_Click(object sender, RoutedEventArgs e)
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -56,7 +56,8 @@ namespace PlannerApp
                                     Title = reader.GetString("title"),
                                     Status = reader.GetString("status"),
                                     Date = reader.GetDateTime("date"),
-                                    Category = reader.GetString("category")
+                                    Category = reader.GetString("category"),
+                                    Description = reader.GetString("description")
                                 });
                             }
                         }

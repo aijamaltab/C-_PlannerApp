@@ -72,7 +72,7 @@ public partial class Calendar : Window
             
             string query = @"SELECT id, title, date, 
                             COALESCE(status, 'Not Started') as status,
-                            COALESCE(category, 'Uncategorized') as category 
+                            COALESCE(category, 'Uncategorized') as category
                           FROM task 
                           WHERE YEAR(date) = @year 
                             AND MONTH(date) = @month";
@@ -137,7 +137,8 @@ public partial class Calendar : Window
                                     Title = reader.GetString("title"),
                                     Status = reader.GetString("status"),
                                     Date = reader.GetDateTime("date"),
-                                    Category = reader.GetString("category")
+                                    Category = reader.GetString("category"),
+                                    Description = reader.GetString("description")
                                 });
                             }
                         }

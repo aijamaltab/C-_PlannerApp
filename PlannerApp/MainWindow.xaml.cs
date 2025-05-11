@@ -63,7 +63,7 @@ namespace PlannerApp
                 {
                     var conn = db.GetConnection();
                     conn.Open();
-                    string query = "SELECT id, title, date, status FROM task WHERE DATE(date) = @selectedDate";
+                    string query = "SELECT id, title, date, status, description FROM task WHERE DATE(date) = @selectedDate";
 
                     if (status != null) // Проверяем, передан ли статус
                     {
@@ -85,7 +85,8 @@ namespace PlannerApp
                                     Id = reader.GetInt32("id"),
                                     Title = reader.GetString("title"),
                                     Date = reader.GetDateTime("date"),
-                                    Status = reader.GetString("status")
+                                    Status = reader.GetString("status"),
+                                    Description = reader.GetString("description")
                                 });
                             }
                         }
@@ -98,7 +99,9 @@ namespace PlannerApp
             }
             return tasks;
         }
-                private void SearchButton_Click(object sender, RoutedEventArgs e)
+        
+        
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -134,7 +137,8 @@ namespace PlannerApp
                                     Title = reader.GetString("title"),
                                     Status = reader.GetString("status"),
                                     Date = reader.GetDateTime("date"),
-                                    Category = reader.GetString("category")
+                                    Category = reader.GetString("category"),
+                                    Description = reader.GetString("description")
                                 });
                             }
                         }

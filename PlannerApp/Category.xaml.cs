@@ -123,7 +123,7 @@ namespace PlannerApp
 
                     foreach (var taskCategory in TaskGroups)
                     {
-                        string taskQuery = "SELECT id, title, date, time FROM task WHERE category = @category";
+                        string taskQuery = "SELECT id, title, date, time, description FROM task WHERE category = @category";
                         using (var taskCmd = new MySqlCommand(taskQuery, connection))
                         {
                             taskCmd.Parameters.AddWithValue("@category", taskCategory.Category);
@@ -137,6 +137,7 @@ namespace PlannerApp
                                         Title = taskReader.GetString("title"),
                                         Date = taskReader.GetDateTime("date"),
                                         Time = taskReader.GetTimeSpan("time"),
+                                        Description = taskReader.GetString("description"),
                                         Category = taskCategory.Category 
                                     };
                                     taskCategory.Tasks.Add(taskItem); 
@@ -184,7 +185,7 @@ namespace PlannerApp
                 {
                     connection.Open();
 
-                    string taskQuery = "SELECT id, title, date, time FROM task WHERE category = @category";
+                    string taskQuery = "SELECT id, title, date, time, description FROM task WHERE category = @category";
                     using (var taskCmd = new MySql.Data.MySqlClient.MySqlCommand(taskQuery, connection))
                     {
                         taskCmd.Parameters.AddWithValue("@category", categoryName);
@@ -198,6 +199,7 @@ namespace PlannerApp
                                     Title = taskReader.GetString("title"),
                                     Date = taskReader.GetDateTime("date"),
                                     Time = taskReader.GetTimeSpan("time"),
+                                    Description = taskReader.GetString("description"),
                                     Category = categoryName
                                 };
                                 tasks.Add(taskItem);
@@ -249,7 +251,8 @@ namespace PlannerApp
                                     Title = reader.GetString("title"),
                                     Status = reader.GetString("status"),
                                     Date = reader.GetDateTime("date"),
-                                    Category = reader.GetString("category")
+                                    Category = reader.GetString("category"),
+                                    Description = reader.GetString("description")
                                 });
                             }
                         }

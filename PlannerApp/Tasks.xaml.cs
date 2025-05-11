@@ -257,7 +257,8 @@ namespace PlannerApp
                                     Title = reader.GetString("title"),
                                     Status = reader.GetString("status"),
                                     Date = reader.GetDateTime("date"),
-                                    Category = reader.GetString("category")
+                                    Category = reader.GetString("category"),
+                                    Description = reader.GetString("description")
                                 });
                             }
                         }
