@@ -1,0 +1,1 @@
+This desktop application was developed by a student team of two as part of our university coursework to apply and reinforce our theoretical knowledge through a practical project. The app is a personal planner designed to help users effectively organize their daily tasks, events, and goals in a clean and user-friendly interface.
